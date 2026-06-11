@@ -401,16 +401,22 @@ async function processCommand() {
     "tablaResultados"
 ).innerHTML = "";
 
-    agregarFila(
+data.registros.forEach(
+    item => {
 
-    data.entrada,
+        agregarFila(
 
-    data.tokens,
+            item.entrada,
 
-    data.gramatica,
+            item.tokens,
 
-    data.sql
+            item.gramatica,
 
+            item.sql
+
+        );
+
+    }
 );
 
     mostrarMensaje(
