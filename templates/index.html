@@ -177,33 +177,12 @@
 
                 </thead>
 
-                <tbody>
+                <tbody id="tablaResultados">
 
-                    <tr>
+            </tbody>
+                      
 
-                        <td
-                            id="entrada"
-                            class="border p-2">
-                        </td>
-
-                        <td
-                            id="tokens"
-                            class="border p-2">
-                        </td>
-
-                        <td
-                            id="gramatica"
-                            class="border p-2">
-                        </td>
-
-                        <td
-                            id="sql"
-                            class="border p-2">
-                        </td>
-
-                    </tr>
-
-                </tbody>
+                   
 
             </table>
 
@@ -323,6 +302,40 @@ function consultarProducto() {
         `consultar ${nombre}`;
 }
 
+function agregarFila(
+    entrada,
+    tokens,
+    gramatica,
+    sql
+){
+
+    document.getElementById(
+        "tablaResultados"
+    ).innerHTML += `
+
+    <tr>
+
+        <td class="border p-2">
+            ${entrada}
+        </td>
+
+        <td class="border p-2">
+            ${tokens}
+        </td>
+
+        <td class="border p-2">
+            ${gramatica}
+        </td>
+
+        <td class="border p-2">
+            ${sql}
+        </td>
+
+    </tr>
+
+    `;
+}
+    
 async function processCommand() {
 
     const codigo =
@@ -355,25 +368,17 @@ async function processCommand() {
         return;
     }
 
-    document.getElementById(
-        "entrada"
-    ).innerText =
-        data.entrada;
+    agregarFila(
 
-    document.getElementById(
-        "tokens"
-    ).innerText =
-        data.tokens;
+    data.entrada,
 
-    document.getElementById(
-        "gramatica"
-    ).innerText =
-        data.gramatica;
+    data.tokens,
 
-    document.getElementById(
-        "sql"
-    ).innerText =
-        data.sql;
+    data.gramatica,
+
+    data.sql
+
+);
 
     document.getElementById(
         "resultado"
