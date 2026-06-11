@@ -293,15 +293,31 @@ def compilar():
 
         datos = request.get_json()
 
-        resultado = procesar_linea(
-            datos["codigo"]
-        )
+        codigo = datos["codigo"]
+
+        resultados = []
+
+        for linea in codigo.splitlines():
+
+            linea = linea.strip()
+
+            if linea == "":
+                continue
+
+            resultado = procesar_linea(
+                linea
+            )
+
+            resultados.append(
+                resultado
+            )
 
         return jsonify({
 
             "ok": True,
 
-            **resultado,
+            "registros":
+            resultados,
 
             "simbolos":
             tabla_simbolos,
