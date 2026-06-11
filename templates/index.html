@@ -409,6 +409,15 @@ async function processCommand() {
             "txtFile"
         ).files[0];
 
+    if(!archivo){
+
+        alert(
+            "Seleccione un archivo TXT"
+        );
+
+        return;
+    }
+
     const formData =
         new FormData();
 
@@ -421,11 +430,8 @@ async function processCommand() {
         await fetch(
             "/importar_txt",
             {
-
                 method:"POST",
-
                 body:formData
-
             }
         );
 
@@ -457,6 +463,15 @@ async function importarExcel(){
             "excelFile"
         ).files[0];
 
+    if(!archivo){
+
+        alert(
+            "Seleccione un archivo Excel"
+        );
+
+        return;
+    }
+
     const formData =
         new FormData();
 
@@ -469,11 +484,8 @@ async function importarExcel(){
         await fetch(
             "/importar_excel",
             {
-
                 method:"POST",
-
                 body:formData
-
             }
         );
 
@@ -496,7 +508,6 @@ async function importarExcel(){
             data.error
         );
     }
-}
 }
 
 async function cargarHistorial(){
