@@ -445,15 +445,30 @@ async function processCommand() {
 
     if(data.ok){
 
-        alert(
-            "TXT importado correctamente"
-        );
+    data.registros.forEach(
+        item => {
 
-        cargarHistorial();
+            agregarFila(
 
-        cargarEstadisticas();
+                item.entrada,
 
-    }else{
+                item.tokens,
+
+                item.gramatica,
+
+                item.sql
+
+            );
+
+        }
+    );
+
+    cargarHistorial();
+
+    cargarEstadisticas();
+
+}
+    else{
 
         alert(
             data.error
@@ -499,15 +514,31 @@ async function importarExcel(){
 
     if(data.ok){
 
-        alert(
-            "Excel importado correctamente"
-        );
+    data.registros.forEach(
+        item => {
 
-        cargarHistorial();
+            agregarFila(
 
-        cargarEstadisticas();
+                item.entrada,
 
-    }else{
+                item.tokens,
+
+                item.gramatica,
+
+                item.sql
+
+            );
+
+        }
+    );
+
+    cargarHistorial();
+
+    cargarEstadisticas();
+
+}
+        
+    else{
 
         alert(
             data.error
